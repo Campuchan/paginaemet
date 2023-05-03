@@ -45,7 +45,7 @@ include("funciones/librerias.php");
 </nav>
   <main style="padding-top: 56px;" class="container">
 
-    <h1>HOLAAA</h1>
+    <h1>CampuTiempo</h1>
     <form id="aemet">
       <label for="ccaa"></label>
       <select name="ccaa">
