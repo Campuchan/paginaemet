@@ -1,5 +1,5 @@
 <?php 
-include("funciones/librerias.php");
+require 'funciones/librerias.php';
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -88,7 +88,6 @@ include("funciones/librerias.php");
           data: $(this).serialize(),
           success: function(response){
             $("#tiempo").html(response);
-            console.log(response);
           }
         });
       });

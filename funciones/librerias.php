@@ -14,7 +14,6 @@ function sacar_texto_bien($textomalo) {
 function curl_aemet($parametrosapi) {
   $curl = curl_init();
   $api_key = file_get_contents("../apikey");
-  $parametrosapi="/ccaa/hoy/rio";
   $envio = "https://opendata.aemet.es/opendata/api/prediccion".$parametrosapi."/?api_key=".$api_key;
   curl_setopt_array($curl, array(
     CURLOPT_URL => $envio,

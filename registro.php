@@ -47,7 +47,7 @@
     <form action="funciones/registroengine.php" class="border col-lg-8 mx-auto p-4 py-md-3 w-25" id="formularioregistro" method="POST">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre de usuario</label>
-                <input type="usuario" class="form-control" id="exampleFormControlInput1" placeholder="">
+                <input id="usuario" type="user" class="form-control" placeholder="">
                 <div id="usuariomal" class="text-danger"></div>
                 <div id="ayudacontrasena" class="form-text">
                   El nombre de usuario debe de tener entre 4 y 21 carácteres, solo letras y números. No puede contener espacios, carácteres especiales o emojis.
@@ -55,7 +55,7 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
                 <div id="email" class="text-danger"></div>
             </div>
             <div class="mb-3">
@@ -78,9 +78,9 @@
 
 
 $(document).ready(function(){
-  const regexcontra = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,21}$/;
-  const regexemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const regexusuario = /^[a-zA-Z0-9]{4,21}$/;
+  const regexcontra = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,21}$/g;
+  const regexemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  const regexusuario = /^[a-zA-Z0-9]{4,21}$/g;
   var usuariobien = 0, correobien = 0, contrabien = 0;
   $('#enviarformulario').attr('disabled', 'true');
   $("#formularioregistro").submit(function(event) {
@@ -102,6 +102,49 @@ $(document).ready(function(){
         $("#emailmal").text("El email es incorrecto");
       }
   });
+
+  $("#email").on({
+    focusout: function() {
+    var email = $("#email").val();
+    if (regexemail.test(email)) {
+      correobien = 1;
+      $("#emailmal").text("");
+      checkregistro()
+    } else {
+      correobien = 0;
+      $("#emailmal").text("El email es incorrecto");
+      checkregistro()
+    }},
+    input: function() {
+      var email = $("#email").val();
+      console.log("AAAAAAAAA")
+      if (regexemail.test(email)) {
+        correobien = 1;
+        $("#emailmal").text("");
+        checkregistro()
+      }
+    }});
+
+  $("#usuario").on({
+    focusout: function() {
+    var usuario = $("#usuario").val();
+    if (regexusuario.test(usuario)) {
+      usuariobien = 1;
+      $("#usuariomal").text("");
+      checkregistro()
+    } else {
+      usuariobien = 0;
+      $("#usuariomal").text("El usuario es incorrecto");
+      checkregistro()
+    }},
+    input: function () {
+    var usuario = $("#usuario").val();
+    if (regexusuario.test(usuario)) {
+      console.log("PENE")
+      usuariobien = 1;
+      $("#usuariomal").text("");
+    }
+    }});
 
   $("#contrasena").on("input", function() {
     console.log(contrasena);
@@ -126,7 +169,7 @@ $(document).ready(function(){
         contrabien = 0;
         event.preventDefault();
       }
-    var usuario = $("#usuario").val();
+    /*var usuario = $("#usuario").val();
       if (!regexusuario.test(usuario)){
         event.preventDefault();
         $("#usuariomal").text("El usuario es incorrecto");
@@ -139,7 +182,7 @@ $(document).ready(function(){
         $("#emailmal").text("El email es incorrecto");
         correobien = 1;
       }
-    
+    */
     if (contrabien == 1 && correobien == 1 && usuariobien == 1) {
       $('#enviarformulario').removeAttr('disabled');
       
