@@ -78,9 +78,9 @@
 
 
 $(document).ready(function(){
-  const regexcontra = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,21}$/g;
-  const regexemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-  const regexusuario = /^[a-zA-Z0-9]{4,21}$/g;
+  const regexcontra = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,21}$/;
+  const regexemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const regexusuario = /^[a-zA-Z0-9]{4,21}$/;
   var usuariobien = 0, correobien = 0, contrabien = 0;
   $('#enviarformulario').attr('disabled', 'true');
   $("#formularioregistro").submit(function(event) {
