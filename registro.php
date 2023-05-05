@@ -56,7 +56,7 @@
             <div class="mb-3">
                 <label for="email" class="form-label">Correo Electrónico</label>
                 <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-                <div id="email" class="text-danger"></div>
+                <div id="emailmal" class="text-danger"></div>
             </div>
             <div class="mb-3">
                 <label for="contrasena" class="form-label">Contraseña</label>
