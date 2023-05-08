@@ -13,7 +13,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     
   </head>
@@ -59,8 +60,10 @@
                 <div id="email" class="text-danger"></div>
             </div>
             <div class="mb-3">
+                <i class="bi bi-eye-slash-fill" id="ojocontra" role="button""></i>
                 <label for="contrasena" class="form-label">Contraseña</label>
                   <input type="password" class="form-control" id="contrasena">
+                <i class="bi bi-eye-fill" id="ojoconfcontra" role="button"></i>
                 <label for="conf-contrasena" class="form-label">Confimar contraseña</label>
                   <input type="password" class="form-control" id="conf-contrasena">
                 <div id="contramal" class="text-danger"></div>
@@ -106,11 +109,14 @@ $(document).ready(function(){
   $("#email").on({
     focusout: function() {
     var email = $("#email").val();
+
     if (regexemail.test(email)) {
       correobien = 1;
       $("#emailmal").text("");
       checkregistro()
     } else {
+      console.log(email)
+      console.log("penemail");
       correobien = 0;
       $("#emailmal").text("El email es incorrecto");
       checkregistro()
@@ -147,20 +153,23 @@ $(document).ready(function(){
     }});
 
   $("#contrasena").on("input", function() {
+    checkregistro();
+  });
+
+  $("#contrasena").on("input", function() {
     console.log(contrasena);
     var contrasena = $("#contrasena").val();
         console.log(contrasena)
     if (regexcontra.test(contrasena)) {
-      
+      console.log("contraseña bien")
       contrabien = 1;
       $("#contramal").text("");
       checkregistro()
     } else {
-      contrabien = 0;
-      $("#contramal").text("La contraseña no cumple los requisitos");
       checkregistro()
     }
   });
+  
 
   function checkregistro() {
     var contrasena = $("#contrasena").val();
@@ -169,6 +178,7 @@ $(document).ready(function(){
         contrabien = 0;
         event.preventDefault();
       }
+      console.log("aaaaasdasdda");
     /*var usuario = $("#usuario").val();
       if (!regexusuario.test(usuario)){
         event.preventDefault();
@@ -185,11 +195,21 @@ $(document).ready(function(){
     */
     if (contrabien == 1 && correobien == 1 && usuariobien == 1) {
       $('#enviarformulario').removeAttr('disabled');
+      console.log(contrabien);
+      console.log(correobien);
+      console.log(usuariobien);
+
       
     } else {
       $('#enviarformulario').attr('disabled', 'true');
+      console.log(contrabien);
+      console.log(correobien);
+      console.log(usuariobien);
     }
   }
+
+
+  //botones de mostrar contraseña
 
 });
 

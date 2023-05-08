@@ -1,4 +1,7 @@
 .tiempo{
     min-height: 700px;
-    background-color: rgb(166, 245, 241);
+    
+}
+body{
+    background-color: aqua;
 }

@@ -1,5 +1,6 @@
 <?php 
 require 'funciones/librerias.php';
+require 'funciones/basededatos.php'
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -9,7 +10,7 @@ require 'funciones/librerias.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Pablo Campuzano">
-    <title>Template</title>
+    <title>CampuTiempo</title>
 
     <link rel="stylesheet" href="estilos.css">
 
@@ -47,8 +48,8 @@ require 'funciones/librerias.php';
 
     <h1>CampuTiempo</h1>
     <form id="aemet">
-      <label for="ccaa"></label>
-      <select name="ccaa">
+      <label for="ccaaa"></label>
+      <select name="ccaaa">
         <option value="and">Andalucía</option>
         <option value="arn">Aragón</option>
         <option value="ast">Asturias</option>
@@ -68,9 +69,11 @@ require 'funciones/librerias.php';
         <option value="rio">La Rioja</option>
       </select>
       <input type="submit" value="Enviar consulta">
+      <div id="selector">
+        <h2>Selector</h2>
+      </div>
     </form>
     <div class="tiempo" id="tiempo">
-      Holaa
     </div>
   </main>
   <footer class="pt-5 my-5 text-body-secondary border-top">
@@ -91,4 +94,36 @@ require 'funciones/librerias.php';
           }
         });
       });
+
+      $(document).ready(function(){
+        $.ajax({
+          type: "POST",
+            url: "funciones/selectorload.php",
+            success: function (respuesta) { 
+              console.log(respuesta)
+              $("#selector").append(respuesta);
+             }
+        }),
+
+        
+        $("#ccaa").on("change" , function(){
+          var ccaa = this.value;
+          console.log("AAAAAAAAAAAAAAAAA");
+          $.ajax({
+            type: "POST",
+            url: "funciones/selector.php",
+            data: $(this).serialize(),
+            success: function (respuesta) { 
+              console.log(respuesta)
+              $("#selectorprovincia").remove();
+              $("#selector").append(respuesta);
+             },
+            error: function (error) { 
+              alert("ha ocurrido un error");
+             }
+            
+          })
+        })
+      });
+
     </script>
