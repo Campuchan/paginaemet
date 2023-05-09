@@ -70,6 +70,7 @@ require 'funciones/basededatos.php'
       </select>
       <input type="submit" value="Enviar consulta">
       <div id="selector">
+      <!-- Selector de municipios y provincias -->
         <h2>Selector</h2>
       </div>
     </form>
@@ -101,12 +102,13 @@ require 'funciones/basededatos.php'
             url: "funciones/selectorload.php",
             success: function (respuesta) { 
               console.log(respuesta)
+              $("#ccaa").remove();
               $("#selector").append(respuesta);
              }
         }),
 
         
-        $("#ccaa").on("change" , function(){
+        $(document).on("change", '#ccaa' , function(){
           var ccaa = this.value;
           console.log("AAAAAAAAAAAAAAAAA");
           $.ajax({
@@ -119,7 +121,7 @@ require 'funciones/basededatos.php'
               $("#selector").append(respuesta);
              },
             error: function (error) { 
-              alert("ha ocurrido un error");
+              alert("ha ocurrido un error: " + error);
              }
             
           })
