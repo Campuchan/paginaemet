@@ -1,21 +1,14 @@
 <?php
 require 'basededatos.php';
 
-
-
-    $comunidades = $mysqli->query("SELECT * FROM nombrecomunidades");
-    while($comunassoc = $comunidades->fetch_assoc()){
-        echo '<option value="'.$comunassoc["CODAUTO"].'">'.$comunassoc["NOMBRE"].'</option>';
-    }
-
     if(isset($_POST["ccaa"])){
         $ccaa = $_POST["ccaa"];
 
         $provincias = $mysqli->query("SELECT * FROM nombreprovincias WHERE CODAUTO = ". $ccaa);
-        echo '<div id="selectorprovincia">
+        echo '<div class="col-sm-3 mb-3 mx-1" id="selectorprovincia">
             <label for="provincia">Provincia</label>
             <select class="form-select" name="provincia" id="provincia">
-        <option disabled selected value>Provincia</option>';
+            <option disabled selected value></option>';
                 while($provinassoc = $provincias->fetch_assoc()){
                   echo '<option value="'.$provinassoc["CODPRO"].'">'.$provinassoc["NOMBRE"].'</option>';
         }
@@ -23,13 +16,15 @@ require 'basededatos.php';
     } elseif (isset($_POST["provincia"])) {
         $provincia = $_POST["provincia"];
         $municipios = $mysqli->query("SELECT * FROM municipios WHERE CPRO = ". $provincia);
-        echo '<div id="selectormunicipio">
-        <label for="provincias">Municipio</label>
-            <select class="form-select" name="ccaa" id="ccaa">
-        <option disabled selected value>Municipio</option>';
+        echo '<div class="col-sm-3 mb-3 mx-1" id="selectormunicipio">
+        <label for="municipio">Municipio</label>
+            <select class="form-select" name="municipio" id="municipio">
+        <option disabled selected value></option>';
                 while($municipioassoc = $municipios->fetch_assoc()){
-                  echo '<option value="'.$municipioassoc["CODAUTO"].'">'.$municipioassoc["NOMBRE"].'</option>';
+                  echo '<option value="'.$municipioassoc["CMUN"].'">'.$municipioassoc["NOMBRE"].'</option>';
         }
+    } elseif (isset($_POST["municipio"])) {
+        echo '<input type="submit" class="form-control mb-3 mx-1 mt-4"" id="preddiccionTiempo" value="Ver Tiempo">';
     }
 
 

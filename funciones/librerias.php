@@ -1,20 +1,17 @@
 <?php
 
 function sacar_texto_bien($textomalo) {
-       return mb_convert_encoding($textomalo, 'UTF-8',
-           mb_detect_encoding($textomalo, 'UTF-8, ISO-8859-1', true));
+       return mb_convert_encoding($textomalo, 'UTF-8', 'ISO-8859-15');
 }
-
-
-
 /**
  * Pide información a la api de aemet
- * @parametrosapi debe empezar por / y acabar sin /
+ * @parametrosapi debe empezar y acabar con /
+ * despues de /api/
  */
 function curl_aemet($parametrosapi) {
   $curl = curl_init();
   $api_key = file_get_contents("../apikey");
-  $envio = "https://opendata.aemet.es/opendata/api/prediccion".$parametrosapi."/?api_key=".$api_key;
+  $envio = "https://opendata.aemet.es/opendata/api".$parametrosapi."/?api_key=".$api_key;
   curl_setopt_array($curl, array(
     CURLOPT_URL => $envio,
     CURLOPT_RETURNTRANSFER => true,
@@ -27,11 +24,42 @@ function curl_aemet($parametrosapi) {
       "cache-control: no-cache"
     ),
   ));
-
   $respuesta = curl_exec($curl);
+  $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
   curl_close($curl);
+  if ($httpcode == 200){
+    return($respuesta);
+  } else {
+    return($httpcode);
+  };
 
-  return($respuesta);
+}
+
+function curl_cataas($parametrosapi) {
+  $curl = curl_init();
+  $api_key = file_get_contents("../apikey");
+  $envio = "https://opendata.aemet.es/opendata/api".$parametrosapi."/?api_key=".$api_key;
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => $envio,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache"
+    ),
+  ));
+  $respuesta = curl_exec($curl);
+  $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+  curl_close($curl);
+  if ($httpcode == 200){
+    return($respuesta);
+  } else {
+    return($httpcode);
+  };
+
 }
 
 /**

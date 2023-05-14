@@ -48,84 +48,21 @@ require 'funciones/basededatos.php'
 
     <h1>CampuTiempo</h1>
     <form id="aemet">
-      <label for="ccaaa"></label>
-      <select name="ccaaa">
-        <option value="and">Andalucía</option>
-        <option value="arn">Aragón</option>
-        <option value="ast">Asturias</option>
-        <option value="bal">Islas Baleares</option>
-        <option value="coo">Canarias</option>
-        <option value="can">Cantabria</option>
-        <option value="cle">Castilla y León</option>
-        <option value="clm">Castilla - La Mancha</option>
-        <option value="cat">Cataluña</option>
-        <option value="val">Comunidad Valenciana</option>
-        <option value="ext">Extremadura</option>
-        <option value="gal">Galicia</option>
-        <option value="mad">Comunidad de Madrid</option>
-        <option value="mur">Región de Murcia</option>
-        <option value="nav">Comunidad Foral de Navarra</option>
-        <option value="pva">País Vasco</option>
-        <option value="rio">La Rioja</option>
-      </select>
-      <input type="submit" value="Enviar consulta">
-      <div id="selector">
       <!-- Selector de municipios y provincias -->
-        <h2>Selector</h2>
+      <h2>Selector</h2>
+      <div class="form-row align-items-center d-flex" id="selector">
+
       </div>
     </form>
+    <div id="preddicion"></div>
     <div class="tiempo" id="tiempo">
     </div>
   </main>
   <footer class="pt-5 my-5 text-body-secondary border-top">
-
+  Información elaborada por la Agencia Estatal de Meteorología
   </footer>
-</div>
-  </body>
+  </div>
+</body>
 </html>
-<script>
-      $("#aemet").submit(function(event){
-        event.preventDefault();
-        $.ajax({
-          type: "POST",
-          url: "aemet/ccaa.php",
-          data: $(this).serialize(),
-          success: function(response){
-            $("#tiempo").html(response);
-          }
-        });
-      });
 
-      $(document).ready(function(){
-        $.ajax({
-          type: "POST",
-            url: "funciones/selectorload.php",
-            success: function (respuesta) { 
-              console.log(respuesta)
-              $("#ccaa").remove();
-              $("#selector").append(respuesta);
-             }
-        }),
-
-        
-        $(document).on("change", '#ccaa' , function(){
-          var ccaa = this.value;
-          console.log("AAAAAAAAAAAAAAAAA");
-          $.ajax({
-            type: "POST",
-            url: "funciones/selector.php",
-            data: $(this).serialize(),
-            success: function (respuesta) { 
-              console.log(respuesta)
-              $("#selectorprovincia").remove();
-              $("#selector").append(respuesta);
-             },
-            error: function (error) { 
-              alert("ha ocurrido un error: " + error);
-             }
-            
-          })
-        })
-      });
-
-    </script>
+<script src="/aemet/preddicciondiaria.js"></script>  
