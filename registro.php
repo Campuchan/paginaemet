@@ -1,5 +1,6 @@
 <?php 
-      include("funciones/basededatos.php"); ?>
+      require'funciones/basededatos.php';
+      require'funciones/sesion.php' ?>
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">

@@ -44,7 +44,8 @@
 
   <h1 class="text-center">Iniciar Sesión</h1>
   <p class="text-center">¿No tienes una cuenta? <a href="registro.php">Crear cuenta</a> </p>
-    <div id="registro">
+    <div id="iniciosesion">
+    <div id="errores"></div>
     <form class="border col-lg-8 mx-auto p-4 py-md-3 w-25" id="formularioiniciosesion" method="POST">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre de usuario</label>
@@ -55,11 +56,11 @@
                 <label for="contrasena" class="form-label user-select-none">Contraseña</label>
                   <input type="password" class="form-control" id="contrasena">
             </div>
-            <input class="w-100 btn btn-lg btn-primary" id="enviarregistro" type="submit" value="Enviar">    
+            <input class="w-100 btn btn-lg btn-primary" id="enviarinicio" type="submit" value="Enviar">    
     </form>
     </div>
 </body>
 
 
-<script src="funciones/registrousuario.js"></script>
+<script src="funciones/iniciosesion.js"></script>
 </html>
