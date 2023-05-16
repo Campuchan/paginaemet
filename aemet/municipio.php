@@ -21,12 +21,12 @@
     $horaactual = date('H');
     $minutoactual = date('i');
     $primerahora = $datos[0]['prediccion']['dia'][0]['temperatura'][0]['periodo'];
-    $horaactualrelativa = $horaactual - $primerahora + 1;
+    $horaactualrelativa = $horaactual - $primerahora;
 
 
     echo '<div>Elaborado en: '. $elaborado->format('H:i:s d/m/Y').'</div>
           <div>Localidad: ' . $localidad.
-         '<h3>Tiempo actual '.$horaactualrelativa. '</h3>
+         '<h3>Tiempo actual</h3>
           <h4>'.$horaactual.':'.$minutoactual.'</h4>
           <div>Temperatura: '.$datos[0]['prediccion']['dia'][0]['temperatura'][$horaactualrelativa]['value'].' Cº </div>
           <div>Estado del cielo: '.$datos[0]['prediccion']['dia'][0]['estadoCielo'][$horaactualrelativa]['descripcion'].'</div>
