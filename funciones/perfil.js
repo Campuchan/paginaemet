@@ -6,12 +6,38 @@ $(document).ready(function(){
             url: "funciones/cerrarsesion.php",
             success: function (respuesta) {
                 if(respuesta == "exito"){
-                    const sesioncerrada = document.createElement("<div>")
+                    const sesioncerrada = document.createElement("div")
                     sesioncerrada.innerhtml = [
                         '<div>Se ha cerrado la sesión</div>' +
                         '<a href="index.php">Volver a Inicio</a>'
                     ]
                     $("#perfil").html(sesioncerrada);
+                }else {
+                    alert("Ha habido un error")
+                }
+                
+            }
+        });
+      })
+
+
+
+    $("#cambiarfoto").on("click", function (event) {
+        event.preventDefault();
+        console.log("aaaaa");
+        var datosfoto = new FormData();
+        datosfoto.append("foto", $('#foto'))
+
+        $.ajax({
+            type: "POST",
+            url: "funciones/cambiarfoto.php",
+            data: datosfoto,
+            processData: false,
+            contentType: false,
+            success: function (respuesta) {
+                console.log(respuesta)
+                if(respuesta == "exito"){
+                    alert("semen")
                 }else {
                     alert("Ha habido un error")
                 }

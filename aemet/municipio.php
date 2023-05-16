@@ -18,9 +18,20 @@
     $elaboradotexto = $datos[0]['elaborado'];
     $elaborado = new DateTime($elaboradotexto);
 
+    $horaactual = date('H');
+    $minutoactual = date('i');
+    $primerahora = $datos[0]['prediccion']['dia'][0]['temperatura'][0]['periodo'];
+    $horaactualrelativa = $horaactual - $primerahora + 1;
+
 
     echo '<div>Elaborado en: '. $elaborado->format('H:i:s d/m/Y').'</div>
-          <div>Localidad: ' . $localidad;
+          <div>Localidad: ' . $localidad.
+         '<h3>Tiempo actual '.$horaactualrelativa. '</h3>
+          <h4>'.$horaactual.':'.$minutoactual.'</h4>
+          <div>Temperatura: '.$datos[0]['prediccion']['dia'][0]['temperatura'][$horaactualrelativa]['value'].' Cº </div>
+          <div>Estado del cielo: '.$datos[0]['prediccion']['dia'][0]['estadoCielo'][$horaactualrelativa]['descripcion'].'</div>
+          <div>Prob. Precipitacion: '.$datos[0]['prediccion']['dia'][0]['precipitacion'][$horaactualrelativa]['value'].' %</div>';;
+        
     
 
     $diaactual = 0;
@@ -86,7 +97,7 @@
               echo "</table>"; //table-responsive
               echo "</div>"; //table-responsive
             echo "</div>"; //dia
-            echo '<button class="esconderdia">Mostrar/Esconder</button>';
+            echo '<button class="esconderdia btn btn-info">Mostrar/Esconder</button>';
       $diaactual++;
     }
     

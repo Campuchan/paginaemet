@@ -1,6 +1,11 @@
 <?php 
-      include("funciones/basededatos.php"); ?>
-
+      require 'funciones/basededatos.php';
+      require 'funciones/sesion.php';
+      
+      if($id_usuario == "nosesion"){
+      }else{
+        echo '<script>window.location.replace("index.php");</script>';
+      };?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -19,46 +24,34 @@
     
   </head>
   <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">CampuTiempo</a>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">CampuTiempo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-        </div>
+
       </div>
     </nav>
-<main style="padding-top: 56px;" class="container">
+  <main style="padding-top: 56px;" class="container">
 
-  <h1 class="text-center">Iniciar Sesión</h1>
-  <p class="text-center">¿No tienes una cuenta? <a href="registro.php">Crear cuenta</a> </p>
-    <div id="iniciosesion">
-    <div id="errores"></div>
-    <form class="border col-lg-8 mx-auto p-4 py-md-3 w-25" id="formularioiniciosesion" method="POST">
-            <div class="mb-3">
-                <label for="usuario" class="form-label">Nombre de usuario</label>
-                <input id="usuario" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="mb-3">
-                <i class="bi bi-eye-slash-fill" id="ojocontra" role="button"></i>
-                <label for="contrasena" class="form-label user-select-none">Contraseña</label>
-                  <input type="password" class="form-control" id="contrasena">
-            </div>
+    <h1 class="text-center">Iniciar Sesión</h1>
+    <p class="text-center">¿No tienes una cuenta? <a href="registro.php">Crear cuenta</a> </p>
+      <div id="iniciosesion">
+        <div id="errores"></div>
+        <form class="border col-lg-8 mx-auto p-4 py-md-3 w-25" id="formularioiniciosesion" method="POST">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Nombre de usuario</label>
+              <input id="usuario" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="mb-3">
+            <i class="bi bi-eye-slash-fill" id="ojocontra" role="button"></i>
+              <label for="contrasena" class="form-label user-select-none">Contraseña</label>
+                <input type="password" class="form-control" id="contrasena">
+          </div>
             <input class="w-100 btn btn-lg btn-primary" id="enviarinicio" type="submit" value="Enviar">    
-    </form>
-    </div>
+        </form>
+      </div>
 </body>
 
 

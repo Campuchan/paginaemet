@@ -19,44 +19,44 @@ require 'funciones/sesion.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
   </head>
-  <body>
+<body>
 
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">CampuTiempo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Inicio</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <?php
-        if($id_usuario == "nosesion"){
-          echo '
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">CampuTiempo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-          <a class="nav-link" href="registro.php">Registro</a>
+            <a class="nav-link" aria-current="page" href="/">Inicio</a>
           </li>
-          <li class="nav-item">
-          <a class="nav-link" href="iniciosesion.php">Inicio sesión</a>
-          </li>
-          ';
-        }else{
-          echo '
-          <li class="nav-item">
-          <a class="navbar-brand" href="perfil.php"><img class="d-inline-block align-text-middle" src="fotoperfil/'.$id_usuario.'.jpeg" width="48px" height="48px">  Perfil</a>
-          </li>
-          ';
-        }
-        ?>
-      </ul>
+        </ul>
+        <ul class="navbar-nav">
+          <?php
+          if($id_usuario == "nosesion"){
+            echo '
+            <li class="nav-item">
+            <a class="nav-link" href="registro.php">Registro</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="iniciosesion.php">Inicio sesión</a>
+            </li>
+            ';
+          }else{
+            echo '
+            <li class="nav-item">
+            <a class="navbar-brand" href="perfil.php"><img class="d-inline-block align-text-middle" src="fotoperfil/'.$id_usuario.'.jpeg" width="48px" height="48px">  Perfil</a>
+            </li>
+            ';
+          }
+          ?>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <main style="padding-top: 56px;" class="container">
 
     <h1>CampuTiempo</h1>
@@ -72,9 +72,9 @@ require 'funciones/sesion.php';
     </div>
   </main>
   <footer class="pt-5 my-5 text-body-secondary border-top">
-  Información elaborada por la Agencia Estatal de Meteorología
+    Información elaborada por la Agencia Estatal de Meteorología
   </footer>
-  </div>
+</div>
 </body>
 </html>
 

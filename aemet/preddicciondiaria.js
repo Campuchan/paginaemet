@@ -36,6 +36,7 @@ $(document).ready(function(){
         data: $(this).serialize(),
         success: function (respuesta) { 
           console.log(respuesta)
+          $("#preddiccionTiempo").remove(); 
           $("#selectormunicipio").remove();
           $("#selector").append(respuesta);
          },

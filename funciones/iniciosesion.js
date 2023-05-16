@@ -85,7 +85,7 @@ $(document).ready(function(){
                 '   <div>Has iniciado sesión</div>' +
                 '   <div id="links"> '+
                 '   <a href="perfil.php">Ir a perfil</a>    ' +
-                '   <a href="index.php"Ir a inicio</a></div>  '+
+                '   <a href="index.php">Ir a inicio</a></div>  '+
                 '</div>'
               ]
               $("#iniciosesion").html(divrespuesta);
