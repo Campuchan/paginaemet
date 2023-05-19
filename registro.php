@@ -45,7 +45,7 @@
   <p class="text-center">¿Ya tienes una cuenta? <a href="/iniciosesion.php">Inicia sesión</a> </p>
     <div id="errores"></div>
     <div id="registro">
-    <form action="funciones/registroengine.php" class="border col-lg-8 mx-auto p-4 py-md-3 w-25" id="formularioregistro" method="POST">
+    <form class="border col-lg-8 mx-auto p-4 py-md-3 w-25" id="formularioregistro" method="POST">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre de usuario</label>
                 <input id="usuario" type="text" class="form-control" placeholder="">
