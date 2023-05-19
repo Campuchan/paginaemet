@@ -1,5 +1,4 @@
 <?php
-
 function sacar_texto_bien($textomalo) {
        return mb_convert_encoding($textomalo, 'UTF-8', 'ISO-8859-15');
 }
@@ -81,7 +80,5 @@ function extraerPrediccion($textoprediccion) {
 
   return $arrayprediccion;
 };
-
-
 
 ?>

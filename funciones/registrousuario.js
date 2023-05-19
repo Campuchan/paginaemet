@@ -53,7 +53,6 @@ $(document).ready(function(){
     });
   
     $("#contrasena").on("input focusout", function(){
-      console.log(contrasena);
       var contrasena = $("#contrasena").val();
       if (regexcontra.test(contrasena)){
         contrabien = 1;
@@ -155,7 +154,6 @@ $(document).ready(function(){
             url: "/funciones/registrousuario.php",
             data: {email: email, contrasena: contrasena, usuario: usuario},
             }).done(function(respuesta){
-              console.log(respuesta);
               if(respuesta == "exito"){
                 let htmlexito = "<h3>¡Exito!</h3>" +
                                 "<p> Ahora ve a <a href='iniciosesion.php'>iniciar sesión</a></p>";
@@ -169,6 +167,7 @@ $(document).ready(function(){
                   '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                   '</div>'
                 ]
+                console.log(errorcorreo)
                 $("#errores").append(errorcorreo);
               }
               else if(respuesta == "usuarioenuso"){

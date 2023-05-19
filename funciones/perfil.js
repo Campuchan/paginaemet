@@ -7,8 +7,8 @@ $(document).ready(function(){
             success: function (respuesta) {
                 if(respuesta == "exito"){
                     const sesioncerrada = document.createElement("div")
-                    sesioncerrada.innerhtml = [
-                        '<div>Se ha cerrado la sesión</div>' +
+                    sesioncerrada.innerHTML = [
+                        '<div class="h4" >Se ha cerrado la sesión</div>' +
                         '<a href="index.php">Volver a Inicio</a>'
                     ]
                     $("#perfil").html(sesioncerrada);
@@ -22,9 +22,8 @@ $(document).ready(function(){
 
 
 
-    $("#cambiarfoto").on("click", function (event) {
+    /*$("#cambiarfoto").on("click", function (event) {
         event.preventDefault();
-        console.log("aaaaa");
         var datosfoto = new FormData();
         datosfoto.append("foto", $('#foto'))
 
@@ -35,14 +34,12 @@ $(document).ready(function(){
             processData: false,
             contentType: false,
             success: function (respuesta) {
-                console.log(respuesta)
                 if(respuesta == "exito"){
-                    alert("semen")
                 }else {
                     alert("Ha habido un error")
                 }
                 
             }
         });
-      })
+      })*/
 })

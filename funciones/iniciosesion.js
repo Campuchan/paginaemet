@@ -28,9 +28,7 @@ $(document).ready(function(){
         checkregistro()
       }},
       input: function () {
-        console.log("holaaaaaa")
       var usuario = $("#usuario").val();
-        console.log(usuario)
       if (regexusuario.test(usuario)){
         usuariobien = 1;
         checkregistro();
@@ -41,7 +39,6 @@ $(document).ready(function(){
     });
     
     $("#contrasena").on("input focusout", function(){
-      console.log(contrasena);
       var contrasena = $("#contrasena").val();
       if (regexcontra.test(contrasena)){
         contrabien = 1;
@@ -77,12 +74,11 @@ $(document).ready(function(){
           url: "/funciones/iniciosesion.php",
           data: {contrasena: contrasena, usuario: usuario},
           }).done(function(respuesta){
-            console.log(respuesta)
             if(respuesta == "exito"){
               const divrespuesta = document.createElement('div')
               divrespuesta.innerHTML = [
                 '<div>' +
-                '   <div>Has iniciado sesión</div>' +
+                '   <div class="h4">Has iniciado sesión</div>' +
                 '   <div id="links"> '+
                 '   <a href="perfil.php">Ir a perfil</a>    ' +
                 '   <a href="index.php">Ir a inicio</a></div>  '+

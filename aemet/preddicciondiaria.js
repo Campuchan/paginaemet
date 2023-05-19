@@ -3,7 +3,6 @@ $(document).ready(function(){
       type: "POST",
         url: "funciones/selectorload.php",
         success: function (respuesta) { 
-          console.log(respuesta)
           $("#ccaa").remove();
           $("#selector").append(respuesta);
          }
@@ -16,7 +15,6 @@ $(document).ready(function(){
         url: "funciones/selector.php",
         data: $(this).serialize(),
         success: function (respuesta) { 
-          console.log(respuesta)
           $("#selectorprovincia").remove();
           $("#selectormunicipio").remove();
           $("#preddiccionTiempo").remove(); 
@@ -35,7 +33,6 @@ $(document).ready(function(){
         url: "funciones/selector.php",
         data: $(this).serialize(),
         success: function (respuesta) { 
-          console.log(respuesta)
           $("#preddiccionTiempo").remove(); 
           $("#selectormunicipio").remove();
           $("#selector").append(respuesta);
@@ -53,7 +50,6 @@ $(document).ready(function(){
         url: "funciones/selector.php",
         data: $(this).serialize(),
         success: function (respuesta) { 
-          console.log(respuesta)
           $("#preddiccionTiempo").remove();
           $("#selector").append(respuesta);
          },
@@ -68,9 +64,7 @@ $(document).ready(function(){
       event.preventDefault();
 
       var municipio = $("#municipio").val();
-      console.log(municipio)
       var provincia = $("#provincia").val();
-      console.log(provincia)
 
       $.ajax({
         type: "POST",
