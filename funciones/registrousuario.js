@@ -5,23 +5,7 @@ $(document).ready(function(){
     var usuariobien = 0, correobien = 0, contrabien = 0;
     $('#enviarregistro').attr('disabled', 'true');
     $("#enviarregistro").submit(function(event) {
-        event.preventDefault();
-      var contrasena = $("#contrasena").val();
-      var confcontrasena = $("#conf-contrasena").val();
-        if (contrasena != confcontrasena){
-          contrabien = 0;
-          checkregistro();
-        }
-      var usuario = $("#usuario").val();
-        if (!regexusuario.test(usuario)){
-          event.preventDefault();
-          $("#usuariomal").text("El usuario es incorrecto");
-        }
-      var email = $("#email").val();
-        if (!regexemail.test(email)){
-          event.preventDefault();
-          $("#emailmal").text("El email es incorrecto");
-        }
+        event.preventDefault()
       })
     $("#email").on({
       focusout: function() {
@@ -141,13 +125,29 @@ $(document).ready(function(){
       }
     }
 
-    $(document).on("click", '#enviarregistro' , function(event){
+    $(document).on("submit", '#formularioregistro' , function(event){
         event.preventDefault();
 
         var usuario = $("#usuario").val();
         var contrasena = $("#contrasena").val();
+        
         var email = $("#email").val();
-
+        var confcontrasena = $("#conf-contrasena").val();
+        
+        if (contrasena != confcontrasena){
+          contrabien = 0;
+          checkregistro();
+        }
+      var usuario = $("#usuario").val();
+        if (!regexusuario.test(usuario)){
+           userbien = 0;
+          $("#usuariomal").text("El usuario es incorrecto");
+        }
+      var email = $("#email").val();
+        if (!regexemail.test(email)){
+            correobien = 0;
+          $("#emailmal").text("El email es incorrecto");
+        }
         var check = checkregistro();
         if (check == "correcto"){
           $.ajax({
